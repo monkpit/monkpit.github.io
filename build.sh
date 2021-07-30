@@ -3,10 +3,12 @@
 
 rm -f readme.md
 
-printf "# Testing Notes - Table of Contents\n\n" >> readme.md
+cat readme.header.md >> readme.md
 
-for mdFile in **/*.md; do
+mdFiles=$(find ./*/ -name \*.md)
+
+for mdFile in $mdFiles; do
   title=$(sed -n "s/^# \(.*\)/\1/p" "$mdFile")
   updated=$(stat -f "%Sm" "$mdFile")
-  printf "[%s](%s) - updated %s\n\n" "$title" "$mdFile" "$updated" >> readme.md
+  printf "* [%s](%s) - updated %s\n" "$title" "$mdFile" "$updated" >> readme.md
 done
