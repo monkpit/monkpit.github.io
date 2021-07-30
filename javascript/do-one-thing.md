@@ -1,0 +1,56 @@
+# Do one thing
+
+I find myself going back and forth on this, so I thought I should write it down once and for all.
+
+I was faced with this code recently:
+
+```javascript
+// cy.fillForm exists in the codebase and
+// accepts (selectors, data) arguments
+
+Cypress.Commands.add('iframeFillForm',
+  (iframeSelector, selectors, data) => {
+    cy.iframe(iframeSelector).within(() => {
+      // duplicated code from `cy.fillForm` pasted here
+    });
+  });
+```
+
+Of course, my natural inclination was to change it to this:
+
+```javascript
+Cypress.Commands.add('iframeFillForm',
+  (iframeSelector, selectors, data) => {
+    cy.iframe(iframeSelector).within(() => {
+      cy.fillForm(selectors, data);
+    });
+  });
+```
+
+But then, my brain said: Keep it dry - why should we have 2 functions that do relatively the same thing?
+
+## Fight the urge!
+
+I had the urge to suggest adding an optional `iframeSelector` to the original implementation, which would have resulted in something along these lines:
+
+```javascript
+// axe `iframeFillForm` entirely - just pass an 
+// optional `iframeSelector` as the final
+// parameter of `fillForm`
+
+Cypress.Commands.add('fillForm',
+  (selectors, data, iframeSelector) => {
+    if (iframeSelector) {
+        cy.iframe(iframeSelector).within(() => {
+          cy.fillForm(selectors, data);
+        });
+    } else {
+        cy.fillForm(selectors, data);
+    }
+  });
+```
+
+Arguably, this function now does 2 different things, and has an unavoidable repitition of `cy.fillForm`.
+
+It's ok to have two different (similar) functions that do two distinct things.
+These don't need to be combined, and it just increases the complexity.
