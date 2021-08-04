@@ -1,0 +1,26 @@
+# Respect future developers' time
+
+So, that line you just wrote might ([will](./code-is-not-permanent.md)) need to be changed in the future.
+But, the code seems simple enough and it shouldn't be a big deal to fix it [later](https://yiming.dev/clipping/2019/03/21/le-blanc's-law-a-k-a-later-equals-never/)...
+
+### Assumptions
+We are assuming the future developer will:
+* have the same mental model of the code we do currently
+* correctly understand the intention of the spec
+* correctly understand the resulting actions of the code
+
+### Reality
+In reality, the future developer will:
+* possibly have never worked on the project, or at least the files in question
+* probably have to ask someone to clarify the original spec (what is the code *supposed* to do?)
+* understand the code as it exists well enough to understand what must be changed
+* either know, or find, all instances where the change must be made
+* implement the change in a way that is understandable to the next dev in the future
+
+Asking someone to do all of these things with due diligence is no small task, especially when they are starting with no prior knowledge of the project or the code in question.
+
+Do the due diligence now, because if you say you'll 'do it later' - remember, when it comes to programming, 'Later equals Never'.
+
+---
+
+## Making your code readable is as important as making it executable - James O. Coplien
