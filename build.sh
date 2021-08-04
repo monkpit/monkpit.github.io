@@ -5,7 +5,7 @@ rm -f readme.md
 
 cat readme.header.md >> readme.md
 
-mdFiles=$(find ./*/ -name \*.md)
+mdFiles=$(find ./**/* -name \*.md)
 
 for mdFile in $mdFiles; do
   title=$(sed -n "s/^# \(.*\)/\1/p" "$mdFile")
