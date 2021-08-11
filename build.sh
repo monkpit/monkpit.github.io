@@ -12,3 +12,5 @@ for mdFile in $mdFiles; do
   updated=$(stat -f "%Sm" "$mdFile")
   printf "* [%s](%s) - updated %s\n" "$title" "$mdFile" "$updated" >> readme.md
 done
+
+cat readme.footer.md >> readme.md
