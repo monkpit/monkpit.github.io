@@ -1,0 +1,77 @@
+# Code should read like prose - mastering levels of abstraction
+
+Well written code flows like a set of instructions.
+It should be as clear and concise as any other form of writing.
+
+If you were given a set of instructions for a task you had never done before, you should be able to read them and understand the overall task without needing to understand every last detail.
+The writer should not have to express every last detail to you at the top level of the instructions.
+
+```
+To make a Peanut Butter sandwich:
+
+* obtain bread
+* obtain peanut butter
+* obtain a knife
+* obtain a plate
+* put 2 pieces of bread on the plate
+* use the knife to get some peanut butter
+* using the knife, spread the peanut butter on 1 side of the bread
+* close the 2 pieces together with peanut butter in the middle
+* tidy up
+* eat
+```
+
+In order for us to express these instructions, we don't have to tell the reader every last detail.
+
+We don't say where to buy the peanut butter, or what size of plate is needed.
+These details might be needed, but they're _implementation details_.
+We can create the sandwich with peanut butter from any grocery store.
+We can use any knife, but we can probably assume that a butter knife would be used.
+
+## Code example
+
+If you were presented with this code, you could read it and understand the role of each piece of the code without diving into the implementation details:
+
+```javascript
+function main() {
+    const sandwichConfig = {
+        numberOfSandwiches: 3,
+        sandwichType: 'peanutbutter'
+    };
+
+    const sandwiches = makeSandwiches(sandwichConfig);
+    serve(sandwiches);
+}
+```
+
+If you were to dive down deeper into the implementation details, you can see more abstraction.
+Exactly the same as before, we can understand the role and purpose of each variable and function without knowing the precise way that the functions are implemented.
+
+```javascript
+function makeSandwiches({numberOfSandwiches, sandwichType}) {
+    const ingredients = getIngredients(sandwichType);
+    const plates = stageSandwiches({numberOfSandwiches, ingredients});
+    const sandwiches = plates.map(makeSandwich(sandwichType));
+
+    return sandwiches;
+}
+```
+
+And if you needed more details, you can dive into deeper levels of abstraction:
+
+```javascript
+const SLICES_PER_SANDWICH = 2;
+
+function stageSandwiches({numberOfSandwiches, ingredients}) {
+    ingredients.map(getIngredient);
+    getKnife();
+    
+    const breadSlices = getBread(numberOfSandwiches * SLICES_PER_SANDWICH);
+    const plates = getPlates(numberOfSandwiches);
+    
+    return plates.map(plate => {
+        const bread = breadSlices.take(SLICES_PER_SANDWICH);
+        plate.place(bread);
+    });
+}
+```

@@ -1,0 +1,99 @@
+# Make function parameters meaningful
+
+Function parameters should be meaningfully named, but also meaningful in the context they're being used in.
+
+```javascript
+function runUserTests(
+    isLoggedIn,
+    isFreeTierUser,
+    numberOfPastPurchases
+) {
+    if (!isLoggedIn) {
+        login();
+    }
+    runAuthenticatedTests(isFreeTierUser, numberOfPastPurchases);
+}
+```
+
+Consider the snippet of code above.
+
+Reading the code like this pretty much makes sense.
+The function accepts a boolean parameter that says whether the user is already logged in or not.
+If not logged in, we run some helper function to login before running our tests.
+When we run the tests, we pass in some parameters to further alter how the tests will run.
+One parameter is a boolean, and the other is a number.
+
+---
+
+## In practice
+However, consider coming across that function at the calling site:
+
+```javascript
+describe('Authentication', () => {
+    it('can login and access user profile', () => {
+        // what does this even mean?
+        runUserTests(true, false, 3);
+    });
+});
+```
+
+It's confusing - what's `true, false, 3`?
+What's the difference if it was `false, true, 5`?
+It's hard to tell immediately without reading some kind of documentation.
+Maybe if the reader is using an IDE they can examine the function signature without having to look up the definition...
+But if the reader is reviewing a PR, then they will have to look up the definition.
+
+## How to improve
+
+If there is only 1 argument to a function, then the function can probably be renamed to make the argument more obvious.
+
+```javascript
+// rename this
+initialize(3);
+
+// to this - there's now a plural noun that describes what the number does
+stagePassengers(3);
+```
+
+Or, with multiple arguments, either convert them to an object, or name them with variables.
+
+```javascript
+// instead of bare arguments that have no contextual meaning
+runUserTests(true, false, 3);
+
+// either name the arugments with variables (situational)
+const isLoggedIn = true;
+const isFreeTierUser = false;
+const numberOfPastPurchases = 3;
+
+runUserTests(isLoggedIn, isFreeTierUser, numberOfPastPurchases);
+
+// or, convert the individual variables into an object (usually preferred)
+const testOptions = {
+    isLoggedIn: true,
+    isFreeTierUser: false,
+    numberOfPastPurchases: 3
+};
+
+runUserTests(testOptions);
+
+// you could also create an anonymous object during the function call
+// but it's less readable unless the object is very small
+
+// ok:
+stagePassengers({ age: 14, numberOfPassengers: 3 });
+
+// too crowded:
+runUserTests({ isLoggedIn: true, isFreeTierUser: false, numberOfPastPurchases: 3 });
+```
+
+
+## TL;DR
+* Function arguments should be meaningful in context of the function call
+  * Needs Improvment: `initialize(3)`
+  * Better: `createPassengers(3)`
+  * Needs improvement: `createPassenger(true)`
+  * Better: `createPassenger({rewardsMember: true})`
+  * Better: `createPassenger(passengerOptions)`
+* If the meaning of a function's argument isn't immediately obvious, refactor.
+Either change the name of the function, or convert the arguments to an object with appropriately named properties.

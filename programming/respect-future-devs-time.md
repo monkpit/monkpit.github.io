@@ -20,7 +20,3 @@ In reality, the future developer will:
 Asking someone to do all of these things with due diligence is no small task, especially when they are starting with no prior knowledge of the project or the code in question.
 
 Do the due diligence now, because if you say you'll 'do it later' - remember, when it comes to programming, 'Later equals Never'.
-
----
-
-## Making your code readable is as important as making it executable - James O. Coplien
