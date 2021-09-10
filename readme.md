@@ -1,6 +1,8 @@
 # Testing Notes - Table of Contents
 
+* [](./cypress/async.md) - updated Sep 10 09:28:39 2021
 * [Don't skip tests without creating a ticket](./cypress/dont-skip-without-ticket.md) - updated Aug 11 13:28:36 2021
+* [Preserving State](./cypress/preserving-state.md) - updated Sep 10 09:15:16 2021
 * [Cypress Retryability](./cypress/retryability.md) - updated Jul 30 10:47:32 2021
 * [Do one thing](./javascript/do-one-thing.md) - updated Jul 30 16:16:59 2021
 * [Simplify branching (if/else)](./javascript/simplify-branching-if-else.md) - updated Aug  4 10:25:53 2021
