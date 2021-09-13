@@ -1,0 +1,27 @@
+{
+  "name": "testing-notes",
+  "version": "1.0.0",
+  "description": "---",
+  "scripts": {
+    "start": "./build.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/monkpit/testing-notes.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/monkpit/testing-notes/issues"
+  },
+  "homepage": "https://github.com/monkpit/testing-notes#readme",
+  "config": {
+    "markdownRoot": "./posts"
+  },
+  "dependencies": {
+    "lodash.curry": "^4.1.1",
+    "lodash.flip": "^4.2.1",
+    "lodash.groupby": "^4.6.0"
+  }
+}

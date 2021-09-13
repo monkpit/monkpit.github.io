@@ -183,3 +183,7 @@ This approach will always work, but it's really overkill for most needs.
 
 ## Alternative approach - setup without Cypress commands if possible
 Use async/await and do not use Cypress to set up your data. Async mixed with Cypress is a whole different topic, and a whole different headache... I have grown to prefer testing tools that don't pull any punches, don't hold your hand, everything is explicit, and the JavaScript you write Just Works™.
+
+---
+
+## TL;DR

@@ -1,18 +1,36 @@
 # Testing Notes - Table of Contents
 
-* [Async - (WIP)](./cypress/async.md) - updated Sep 10 11:16:35 2021
-* [Don't skip tests without creating a ticket](./cypress/dont-skip-without-ticket.md) - updated Aug 11 13:28:36 2021
-* [Preserving State](./cypress/preserving-state.md) - updated Sep 10 09:15:16 2021
-* [Cypress Retryability](./cypress/retryability.md) - updated Jul 30 10:47:32 2021
-* [Do one thing](./javascript/do-one-thing.md) - updated Jul 30 16:16:59 2021
-* [Simplify branching (if/else)](./javascript/simplify-branching-if-else.md) - updated Aug  4 10:25:53 2021
-* [Code is not permanent](./programming/code-is-not-permanent.md) - updated Aug  4 13:04:13 2021
-* [Code should read like prose - mastering levels of abstraction](./programming/code-should-read-like-prose.md) - updated Aug 10 13:54:45 2021
-* [Don't shorten names](./programming/naming/dont-shorten-names.md) - updated Aug  4 12:55:12 2021
-* [Don't suffix names](./programming/naming/dont-suffix-names.md) - updated Aug  4 13:03:33 2021
-* [Don't use one function when you really need two](./programming/naming/dont-use-one-function-when-you-need-two.md) - updated Aug 11 17:04:59 2021
-* [Make function parameters meaningful](./programming/parameters/make-parameters-meaningful.md) - updated Aug 10 13:21:26 2021
-* [Respect future developers' time](./programming/respect-future-devs-time.md) - updated Aug 10 13:22:03 2021
+
+## cypress
+* [Preserving State
+](./posts/cypress/preserving-state.md) - last modified 9/10/2021
+* [Async - (WIP)](./posts/cypress/async.md) - last modified 9/10/2021
+* [Cypress Retryability
+](./posts/cypress/retryability.md) - last modified 7/30/2021
+* [Don't skip tests without creating a ticket
+](./posts/cypress/dont-skip-without-ticket.md) - last modified 8/11/2021
+## programming
+* [Respect future developers' time
+](./posts/programming/respect-future-devs-time.md) - last modified 8/10/2021
+* [Code should read like prose - mastering levels of abstraction
+](./posts/programming/code-should-read-like-prose.md) - last modified 8/10/2021
+* [Code is not permanent
+](./posts/programming/code-is-not-permanent.md) - last modified 8/4/2021
+## programming/naming
+* [Don't shorten names
+](./posts/programming/naming/dont-shorten-names.md) - last modified 8/4/2021
+* [Don't suffix names
+](./posts/programming/naming/dont-suffix-names.md) - last modified 8/4/2021
+* [Don't use one function when you really need two
+](./posts/programming/naming/dont-use-one-function-when-you-need-two.md) - last modified 8/11/2021
+## programming/parameters
+* [Make function parameters meaningful
+](./posts/programming/parameters/make-parameters-meaningful.md) - last modified 8/10/2021
+## javascript
+* [Do one thing
+](./posts/javascript/do-one-thing.md) - last modified 7/30/2021
+* [Simplify branching (if/else)
+](./posts/javascript/simplify-branching-if-else.md) - last modified 8/4/2021
 
 ---
 
