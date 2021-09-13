@@ -9,13 +9,9 @@
 ](./posts/cypress/retryability.md) - last modified 7/30/2021
 * [Don't skip tests without creating a ticket
 ](./posts/cypress/dont-skip-without-ticket.md) - last modified 8/11/2021
-## programming
-* [Respect future developers' time
-](./posts/programming/respect-future-devs-time.md) - last modified 8/10/2021
-* [Code should read like prose - mastering levels of abstraction
-](./posts/programming/code-should-read-like-prose.md) - last modified 8/10/2021
-* [Code is not permanent
-](./posts/programming/code-is-not-permanent.md) - last modified 8/4/2021
+## programming/branching
+* [Simplify branching (if/else)
+](./posts/programming/branching/simplify-branching-if-else.md) - last modified 9/13/2021
 ## programming/naming
 * [Don't shorten names
 ](./posts/programming/naming/dont-shorten-names.md) - last modified 8/4/2021
@@ -26,11 +22,15 @@
 ## programming/parameters
 * [Make function parameters meaningful
 ](./posts/programming/parameters/make-parameters-meaningful.md) - last modified 8/10/2021
-## javascript
+## programming/strategy
+* [Respect future developers' time
+](./posts/programming/strategy/respect-future-devs-time.md) - last modified 9/13/2021
 * [Do one thing
-](./posts/javascript/do-one-thing.md) - last modified 7/30/2021
-* [Simplify branching (if/else)
-](./posts/javascript/simplify-branching-if-else.md) - last modified 8/4/2021
+](./posts/programming/strategy/do-one-thing.md) - last modified 9/13/2021
+* [Code should read like prose - mastering levels of abstraction
+](./posts/programming/strategy/code-should-read-like-prose.md) - last modified 9/13/2021
+* [Code is not permanent
+](./posts/programming/strategy/code-is-not-permanent.md) - last modified 9/13/2021
 
 ---
 
