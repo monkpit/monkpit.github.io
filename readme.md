@@ -9,6 +9,8 @@
 ](./posts/cypress/retryability.md) - last modified 7/30/2021
 * [Don't skip tests without creating a ticket
 ](./posts/cypress/dont-skip-without-ticket.md) - last modified 8/11/2021
+* [Exist vs Visible assertions
+](./posts/cypress/exist-vs-visible.md) - last modified 9/14/2021
 ## programming/branching
 * [Simplify branching (if/else)
 ](./posts/programming/branching/simplify-branching-if-else.md) - last modified 9/13/2021
