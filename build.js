@@ -25,7 +25,7 @@ const fileGroups = groupByDirectory(files);
 
 const renderGroup = (group) => [`## ${group}`, ...fileGroups[group].map(renderEntry)].join('\n');
 const renderEntry = (file) => `* [${getTitle(file)}](${file}) - last modified ${getModifiedDate(file)}`;
-const getTitle = (file) => execSync(`sed -n "s/^# \\(.*\\)/\\1/p" ${file}`).toString();
+const getTitle = (file) => execSync(`sed -n "s/^# \\(.*\\)/\\1/p" ${file} | tr -d '\\n'`).toString();
 const getModifiedDate = (file) => fs.statSync(file).mtime.toLocaleDateString();
 
 const createTOC = (fileGroups) => {
@@ -36,3 +36,5 @@ const createTOC = (fileGroups) => {
 }
 
 fs.writeFileSync('./readme.md', createTOC(fileGroups))
+execSync('./write_html.sh');
+execSync('./update_readme_links.sh');

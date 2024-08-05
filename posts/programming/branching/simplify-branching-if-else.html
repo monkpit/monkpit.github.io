@@ -1,0 +1,98 @@
+<script src="https://rawcdn.githack.com/oscarmorrison/md-page/232e97938de9f4d79f4110f6cfd637e186b63317/md-page.js"></script><noscript>
+# Simplify branching (if/else)
+
+When writing branching logic (if/else), try to keep the number of branches minimal, and the branch bodies succinct.
+
+One way to shorten branch bodies is to identify scenarios where there is duplicate code and pull it out of the branches completely.
+
+---
+
+## Example
+
+Let's say we want to have two different sets of test steps based upon whether a user is logged in.
+
+```javascript
+if (userIsLoggedIn) {
+    addProductToCart(product);
+    openCart();
+    validateCartContents([product]);
+    validateUserNameIsShown(user.firstName);
+    completePurchase();
+} else {
+    addProductToCart(product);
+    openCart();
+    validateCartContents([product]);
+    completePurchase();
+}
+```
+
+This code is arguably correct, and achieves our stated goal.
+
+However, duplicating some of the test steps has led to extra lines of code.
+
+What if the flow is changed in the future?
+Now all branches have to be changed to match the new flow.
+
+This might seem like a minor task, but it's [time-consuming for the future developer](../programming/respect-future-devs-time.md).
+
+---
+
+## Deduplication
+
+How could the code be improved?
+
+We could remove the duplication of some of the steps inside our `if/else`.
+
+```javascript
+addProductToCart(product);
+openCart();
+validateCartContents([product]);
+
+if (userIsLoggedIn) {
+    validateUserNameIsShown(user.firstName);
+}
+
+completePurchase();
+```
+
+The only part of the top `if` block that actually varied on `userIsLoggedIn` was `validateUserNameIsShown`.
+
+---
+
+## Why is it better?
+
+Consider reading this code as a future developer with no context, and maybe even no ability to discuss the code with you, the original author.
+
+The future developer will be reading this code for the first time, and does not know the difference between the `if` and `else` blocks yet.
+
+---
+
+### The rabbit hole
+
+So, the developer starts by reading the `if` block.
+They build up context, and reason about what is happening in the code, and try to figure out exactly what's going on.
+
+Then they finish with the top `if` block - they understand it now, probably not fully, but enough to get by and continue reading the `else`.
+
+They move on to the `else` and 1 of 2 things happens: either they recognize that the code is doing mostly the same thing, or they assume good faith and continue reading the code.
+
+If they continue reading the code, they will spend roughly 2x as long to read and process both blocks.
+
+If they stop and wonder, 'why is this duplicated?', then they might be led down a rabbit hole - surely if the code is duplicated, it was done for a reason.
+But what reason?
+
+They might ask around, other developers are now involved.
+They read the code, and they don't know.
+Change it and test it out, they say.
+
+Now the developer is running the code just to solidify their understanding of how and why it works the way it does.
+With any code, this takes time.
+With Cypress code and a large test project, this takes considerable time.
+
+---
+
+## Save a rabbit - write concise code
+
+If the original implementation is deduplicated, it clearly expresses the intended behavior.
+The code will always do most of the steps, and in some special case it will also `validateUserNameIsShown`.
+The intention is clear, and changes can be made much more easily, saving time on future dev work and maintenance.
